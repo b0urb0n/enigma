@@ -8,7 +8,7 @@ def test_rotor():
 	assert r._table == list(rotor.I)
 	
 	with pytest.expectError():
-		rotor.Rotor(rotor.I[:-2])
+		rotor.Rotor('ABC')
 
 
 def test_rotor_encode(rotor_I):
