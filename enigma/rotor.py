@@ -35,8 +35,8 @@ class Rotor(object):
 	This is represented by a negative offset that changed the physical rotor by n
 	"""
 	def __init__(self, table: AnyStr, *, offset: int = 0, notches: Collection = ()):
-		self.table = list(table)
-		self.notches = notches
+		self._table = list(table)
+		self._notches = notches
 		self._step(offset)
 
 	def _step(self, count: int = 1, *, notch_callback: Callable = None):
@@ -48,11 +48,11 @@ class Rotor(object):
 		:param notch_callback: The callback function to execute if the rotor is advanced while in the notched position
 		"""
 		for _ in range(count):
-			if self.table[0] in self.notches and notch_callback:
+			if self._table[0] in self._notches and notch_callback:
 				# notch_callback is usually the next rotor's .step() method
 				notch_callback()
 
-			self.table.insert(0, self.table.pop())
+			self._table.insert(0, self._table.pop())
 
 	def encode(self, letter: AnyStr, *, step: bool = True):
 		"""
@@ -64,4 +64,4 @@ class Rotor(object):
 		self._step()
 
 		index = ascii_uppercase.index(letter.upper())
-		return self.table[index]
+		return self._table[index]
