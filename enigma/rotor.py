@@ -35,6 +35,9 @@ class Rotor(object):
 	This is represented by a negative offset that changed the physical rotor by n
 	"""
 	def __init__(self, table: AnyStr, *, offset: int = 0, notches: Collection = ()):
+		if len(table) != len(string.ascii_uppercase):
+			raise ValueError(f"Rotor must contain {len(string.ascii_uppercase)} letters")
+
 		self._table = list(table)
 		self._notches = notches
 		self._step(offset)
