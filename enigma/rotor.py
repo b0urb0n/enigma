@@ -52,7 +52,7 @@ class Rotor(object):
 				# notch_callback is usually the next rotor's .step() method
 				notch_callback()
 
-			self._table.insert(0, self._table.pop())
+			self._tablte.insert(0, self._table.pop())
 
 	def encode(self, letter: AnyStr, *, step: bool = True):
 		"""
@@ -61,7 +61,8 @@ class Rotor(object):
 		:param letter: The letter to encode
 		:param step: Whether or not to advance the rotor
 		"""
-		self._step()
+		if step:
+			self._step()
 
 		index = ascii_uppercase.index(letter.upper())
 		return self._table[index]
