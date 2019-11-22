@@ -37,9 +37,9 @@ class Rotor(object):
 	def __init__(self, table: AnyStr, *, offset: int = 0, notches: Collection = ()):
 		self.table = list(table)
 		self.notches = notches
-		self.step(offset)
+		self._step(offset)
 
-	def step(self, count: int = 1, *, notch_callback: Callable = None):
+	def _step(self, count: int = 1, *, notch_callback: Callable = None):
 		"""
 		Advance the rotor n times and executes notch_callback if provided.  The callback should be the next rotor's
 		.step() method.
@@ -61,7 +61,7 @@ class Rotor(object):
 		:param letter: The letter to encode
 		:param step: Whether or not to advance the rotor
 		"""
-		self.step()
+		self._step()
 
-		index = ascii_uppercase.index(letter)
+		index = ascii_uppercase.index(letter.upper())
 		return self.table[index]
