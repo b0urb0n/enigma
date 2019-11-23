@@ -36,3 +36,8 @@ def test_rotor_callback(rotor_I):
 	rotor_I._step(notch_callback=notch_cb)  # callback should get called this step
 	print(rotor_I._table[0])
 	assert flag == True
+
+
+@pytest.mark.xfail
+def test_rotor_setting():
+	r = rotor.Rotor(rotor.I, setting=-2)
