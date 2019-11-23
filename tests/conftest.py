@@ -5,4 +5,4 @@ from enigma import rotor
 
 @pytest.fixture
 def rotor_I():
-	return rotor.Rotor(rotor.I, notches=('H'))
+	return rotor.Rotor(rotor.I, notches=('N'))

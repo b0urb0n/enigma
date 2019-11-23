@@ -30,11 +30,10 @@ def test_rotor_callback(rotor_I):
 		global flag
 		flag = True
 
+	rotor_I._step(7)
 	rotor_I._step(notch_callback=notch_cb)  # callback should not get called this step
-	print(rotor_I._table[0])
 	assert flag == False
 	rotor_I._step(notch_callback=notch_cb)  # callback should get called this step
-	print(rotor_I._table[0])
 	assert flag == True
 
 
