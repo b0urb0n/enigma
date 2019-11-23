@@ -51,11 +51,10 @@ class Rotor(object):
 		:param notch_callback: The callback function to execute if the rotor is advanced while in the notched position
 		"""
 		for _ in range(count):
+			self._table.insert(0, self._table.pop())
 			if self._table[0] in self._notches and notch_callback:
 				# notch_callback is usually the next rotor's .step() method
 				notch_callback()
-
-			self._table.insert(0, self._table.pop())
 
 	def encode(self, letter: AnyStr, *, step: bool = True):
 		"""
