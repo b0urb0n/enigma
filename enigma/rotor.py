@@ -35,8 +35,8 @@ class Rotor(object):
 	This is represented by a negative offset that changed the physical rotor by n
 	"""
 	def __init__(self, table: AnyStr, *, offset: int = 0, notches: Collection = ()):
-		if len(table) != len(string.ascii_uppercase):
-			raise ValueError(f"Rotor must contain {len(string.ascii_uppercase)} letters")
+		if len(table) != len(ascii_uppercase):
+			raise ValueError(f"Rotor must contain {len(ascii_uppercase)} letters")
 
 		self._table = list(table)
 		self._notches = notches
@@ -55,7 +55,7 @@ class Rotor(object):
 				# notch_callback is usually the next rotor's .step() method
 				notch_callback()
 
-			self._tablte.insert(0, self._table.pop())
+			self._table.insert(0, self._table.pop())
 
 	def encode(self, letter: AnyStr, *, step: bool = True):
 		"""
