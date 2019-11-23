@@ -24,11 +24,11 @@ class Rotor(object):
 
 	Wiring:
 	Rotors had internal wiring that allowed letters to be "encoded" via pseudo-random electrical wiring
-	The wiring is simulated with a List that is "rotated" via .insert() and .pop()
+	The wiring is simulated with a list that is "rotated" via .insert() and .pop()
 
 	Offset:
 	Rotora were often offset to offer an additional layer of scrambling.  This is accomplished by calling
-	.ste(n) where n is the offset (int).
+	.step(n) where n is the offset (int).
 
 	Ring Setting:
 	NOT IMPLEMENTED YET
